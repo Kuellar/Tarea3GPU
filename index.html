@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+        integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+        crossorigin="anonymous" defer>
+    </script>
+    <script src="js/three.js"></script>
+    <script type="module" src="index.js"></script>
+    <script type="module" src="actions.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Tarea 3 GPU</title>
+</head>
+<body>
+<div class="menu-section menu-section-init" id="menu-section">
+    <div class="box">
+        <h1 class="title to-center">Tarea 3</h1>
+    </div>
+
+    <div class="field box">
+        <label class="label">Shader</label>
+        <div class="control">
+          <label class="radio">
+            Phong Shading
+            <input type="radio" name="shader" id="shader-phong" value="phong" checked>
+          </label>
+          <br>
+          <label class="radio">
+            Normal Mapping
+            <input type="radio" name="shader" id="shader-normal" value="normal">
+          </label>
+          <br>
+          <label class="radio">
+            Toon Shading
+            <input type="radio" name="shader" id="shader-toon" value="toon">
+          </label>
+          <br>
+          <label class="radio">
+            Bump Mapping
+            <input type="radio" name="shader" id="shader-bump" value="bump">
+          </label>
+        </div>
+    </div>
+
+    <div class="field box">
+        <label class="label">Object</label>
+        <div class="control">
+          <label class="radio">
+            Esfera
+            <input type="radio" name="object" id="object-esfera" value="esfera" checked>
+          </label>
+          <br>
+          <label class="radio">
+            Cubo
+            <input type="radio" name="object" id="object-cubo" value="cubo">
+          </label>
+          <br>
+          <label class="radio">
+            Pirámide de base cuadrada
+            <input type="radio" name="object" id="object-piramide" value="piramide">
+          </label>
+          <br>
+          <label class="radio">
+            Tetraedo
+            <input type="radio" name="object" id="object-tetraedo" value="tetraedo">
+          </label>
+          <br>
+          <label class="radio">
+            Otro
+            <input type="radio" name="object" id="object-otro" value="otro">
+          </label>
+        </div>
+    </div>
+
+    <div class="box">
+        <span class="label">Upload object</span>
+        <div class="file has-name">
+            <label class="file-label">
+              <input class="file-input" type="file" name="resume">
+              <span class="file-cta">
+                <span class="file-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <title>File</title>
+                        <path d="M384 80H128c-26 0-43 14-48 40L48 272v112a48.14 48.14 0 0048 48h320a48.14 48.14 0 0048-48V272l-32-152c-5-27-23-40-48-40z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/>
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M48 272h144M320 272h144M192 272a64 64 0 00128 0M144 144h224M128 208h256"/>
+                    </svg>
+                </span>
+                <span class="file-label">
+                  Choose a file…
+                </span>
+              </span>
+              <span class="file-name">
+                .stl
+              </span>
+            </label>
+          </div>
+    </div>
+
+    <button type="button" id="apply" class="button is-link to-right">Apply</button>
+
+    <button class="button alternator" id="alternator">
+        <span class="icon is-large" id="alternator-icon">
+            <svg class="alternator-icon" width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <title>Alternator Icon</title>
+                <path d="M321.94 98L158.82 237.78a24 24 0 000 36.44L321.94 414c15.57 13.34 39.62 2.28 39.62-18.22v-279.6c0-20.5-24.05-31.56-39.62-18.18z"/>
+            </svg>
+        </span>
+    </button>
+</div>
+<!-- CANVAS TRHEEJS -->
+<div id="threejsCanvas"></div>
+</body>
+</html>

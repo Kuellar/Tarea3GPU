@@ -1,0 +1,98 @@
+:root {
+    --menu-width: 300px;
+    ---menu-width: -300px;
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+canvas {
+    display: block;
+}
+
+.menu-section {
+    position: absolute;
+    width: var(--menu-width);
+    background-color: whitesmoke;
+    height: 100%;
+}
+
+.to-right {
+    margin-right: 20px;
+    float: right;
+}
+
+.to-center {
+    text-align: center;
+}
+
+/* Menu toggler */
+.alternator {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
+    left: var(--menu-width);
+    width: 20px;
+    height: 70px;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Menu animation */
+.menu-section-close {
+    animation-name: menu-animation-close;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    left: 0;
+}
+
+.menu-section-open {
+    animation-name: menu-animation-open;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    left: var(---menu-width);
+}
+
+.alternator-left {
+    animation-name: icon-animation-close;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    transform: rotate(0);
+}
+
+.alternator-right {
+    animation-name: icon-animation-open;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    transform: rotate(1800deg);
+}
+
+@keyframes menu-animation-close {
+    from {left: 0;}
+    to {left: var(---menu-width);}
+}
+
+@keyframes menu-animation-open {
+    from {left: var(---menu-width);}
+    to {left: 0;}
+}
+
+@keyframes icon-animation-close {
+    from {transform: rotate(0g);}
+    to {transform: rotate(180deg);}
+}
+
+@keyframes icon-animation-open {
+    from {transform: rotate(-180deg);}
+    to {transform: rotate(0deg);}
+}
