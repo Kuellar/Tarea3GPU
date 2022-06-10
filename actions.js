@@ -24,3 +24,19 @@ const change_menu = () => {
     }
 };
 document.getElementById("alternator").addEventListener("click", change_menu);
+
+/**
+ * Action taken by eye button.
+ */
+const change_eye = () => {
+    document.getElementById("grill-eye").value = !!document.getElementById(
+        "grill-eye"
+    ).value
+        ? ""
+        : "1";
+    const onIcon = document.getElementById("eye-icon-on");
+    const offIcon = document.getElementById("eye-icon-off");
+    onIcon.classList.toggle("eye-hide-icon");
+    offIcon.classList.toggle("eye-hide-icon");
+};
+document.getElementById("eye-button").addEventListener("click", change_eye);

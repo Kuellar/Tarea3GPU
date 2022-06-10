@@ -1,51 +1,50 @@
-// prettier-ignore
-const positions = [
-    1.0, 1.0,
-    -1.0, 1.0,
-    1.0, -1.0,
-    -1.0, -1.0,
-];
-
-// prettier-ignore
-const colors = [
-    1.0,  1.0,  1.0,  1.0,    // white
-    1.0,  0.0,  0.0,  1.0,    // red
-    0.0,  1.0,  0.0,  1.0,    // green
-    0.0,  0.0,  1.0,  1.0,    // blue
-];
-
-// prettier-ignore
-const indices = [
-    0,  1,  2,
-    0,  2,  3,
-];
+import { getGrill } from "./objects.js";
 
 const main = () => {
+    /* SETUP */
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
-    );
+    const camera = new THREE.OrthographicCamera(0, width, 0, height, 1, 1000);
+    camera.position.z = 5;
+
+    camera.zoom = 1;
+    camera.updateProjectionMatrix();
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById("threejsCanvas").appendChild(renderer.domElement);
+    /* SETUP */
 
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
-    camera.position.z = 5;
+    /* GRILL */
+    const MAX_POINTS_GRILL = 1000;
+    const grillGeometry = new THREE.BufferGeometry();
+    const grillPositions = new Float32Array(MAX_POINTS_GRILL * 3); // 3 vertices per point
+    grillGeometry.setAttribute(
+        "position",
+        new THREE.BufferAttribute(grillPositions, 3)
+    );
+    /* GRILL */
 
     function animate() {
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
 
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
+        /* GRILL */
+        if (!!document.getElementById("grill-eye").value) {
+            const grillDivision =
+                document.getElementById("grill-division").value;
+            const grill = getGrill(
+                grillGeometry,
+                camera.right,
+                camera.bottom,
+                grillDivision
+            );
+            scene.add(grill);
+        } else {
+            grillGeometry.setDrawRange(0, 0);
+        }
+        /* GRILL */
     }
     animate();
 };
