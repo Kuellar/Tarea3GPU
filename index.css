@@ -19,18 +19,31 @@ canvas {
 
 .menu-section {
     position: absolute;
-    width: var(--menu-width);
     background-color: whitesmoke;
     height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-width: var(--menu-width);
+    width: var(--menu-width);
 }
 
 .to-right {
     margin-right: 20px;
     float: right;
+    margin-bottom: 10px;
 }
 
 .to-center {
     text-align: center;
+}
+
+
+.sticky {
+    opacity: 1;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 5;
 }
 
 /* Menu toggler */
@@ -62,19 +75,39 @@ canvas {
 }
 
 .alternator-left {
-    animation-name: icon-animation-close;
+    animation-name: alternator-animation-close;
     animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
     transform: rotate(0);
+    left: var(--menu-width);
 }
 
 .alternator-right {
-    animation-name: icon-animation-open;
+    animation-name: alternator-animation-open;
     animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
     transform: rotate(1800deg);
+    left: 0;
+}
+
+.alternator-icon-left {
+    animation-name: alternator-icon-animation-close;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    transform: rotate(0);
+    left: var(--menu-width);
+}
+
+.alternator-icon-right {
+    animation-name: alternator-icon-animation-open;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    transform: rotate(1800deg);
+    left: 0;
 }
 
 @keyframes menu-animation-close {
@@ -87,12 +120,38 @@ canvas {
     to {left: 0;}
 }
 
-@keyframes icon-animation-close {
-    from {transform: rotate(0g);}
-    to {transform: rotate(180deg);}
+@keyframes alternator-icon-animation-close {
+    from {
+        transform: rotate(0g);
+    }
+    to {
+        transform: rotate(180deg);
+    }
 }
 
-@keyframes icon-animation-open {
-    from {transform: rotate(-180deg);}
-    to {transform: rotate(0deg);}
+@keyframes alternator-icon-animation-open {
+    from {
+        transform: rotate(-180deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes alternator-animation-close {
+    from {
+        left: var(--menu-width);
+    }
+    to {
+        left: 0;
+    }
+}
+
+@keyframes alternator-animation-open {
+    from {
+        left: 0;
+    }
+    to {
+        left: var(--menu-width);
+    }
 }
