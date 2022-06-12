@@ -12,8 +12,20 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 // PLAYGROUND
+// GRILL
 uniform float u_grill;
 uniform bool u_grill_active;
+
+// CELL
+uniform bool u_cell_show_color;
+uniform float u_cell_r;
+uniform float u_cell_g;
+uniform float u_cell_b;
+uniform bool u_field_show_color;
+uniform float u_field_r;
+uniform float u_field_g;
+uniform float u_field_b;
+// CELL CENTER
 uniform bool u_point_active;
 uniform float u_point_size;
 uniform float u_point_r;
@@ -58,12 +70,19 @@ void main() {
     }
 
     // Assign a color using the closest point position
-    color += dot(m_point,vec2(.3,.6));
+    // color += dot(m_point,vec2(.4,.6));
+    if (u_cell_show_color) {
+        color.r += dot(m_point,vec2(.4,.6))*u_cell_r;
+        color.g += dot(m_point,vec2(.4,.6))*u_cell_g;
+        color.b += dot(m_point,vec2(.4,.6))*u_cell_b;
+    }
 
     // Add distance field to closest point center
-    //color.r = m_dist;
-    //color.g = m_dist;
-    //color.b = m_dist;
+    if (u_field_show_color) {
+        color.r += m_dist * u_field_r;
+        color.g += m_dist * u_field_g;
+        color.b += m_dist * u_field_b;
+    }
 
     // Show isolines
     // color -= abs(sin(40.0*m_dist))*0.07;

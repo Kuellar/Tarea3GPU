@@ -49,6 +49,39 @@ const init = () => {
             value: !!document.getElementById("grill-eye").value,
         },
         // CELL
+        u_cell_show_color: {
+            type: "bool",
+            value: document.getElementById("cell-show-color").checked,
+        },
+        u_cell_r: {
+            type: "f",
+            value: document.getElementById("cell-color-r").value,
+        },
+        u_cell_g: {
+            type: "f",
+            value: document.getElementById("cell-color-g").value,
+        },
+        u_cell_b: {
+            type: "f",
+            value: document.getElementById("cell-color-b").value,
+        },
+        u_field_show_color: {
+            type: "bool",
+            value: document.getElementById("field-show-color").checked,
+        },
+        u_field_r: {
+            type: "f",
+            value: document.getElementById("field-color-r").value,
+        },
+        u_field_g: {
+            type: "f",
+            value: document.getElementById("field-color-g").value,
+        },
+        u_field_b: {
+            type: "f",
+            value: document.getElementById("field-color-b").value,
+        },
+        // CELL CENTER
         u_point_active: {
             type: "bool",
             value: document.getElementById("show-point").checked,
@@ -127,6 +160,17 @@ const render = () => {
     uniforms.u_grill_active.value =
         !!document.getElementById("grill-eye").value;
     // CELL
+    uniforms.u_cell_show_color.value =
+        document.getElementById("cell-show-color").checked;
+    uniforms.u_cell_r.value = document.getElementById("cell-color-r").value;
+    uniforms.u_cell_g.value = document.getElementById("cell-color-g").value;
+    uniforms.u_cell_b.value = document.getElementById("cell-color-b").value;
+    uniforms.u_field_show_color.value =
+        document.getElementById("field-show-color").checked;
+    uniforms.u_field_r.value = document.getElementById("field-color-r").value;
+    uniforms.u_field_g.value = document.getElementById("field-color-g").value;
+    uniforms.u_field_b.value = document.getElementById("field-color-b").value;
+    // CELL CENTER
     uniforms.u_point_active.value =
         document.getElementById("show-point").checked;
     uniforms.u_point_size.value = document.getElementById("point-size").value;

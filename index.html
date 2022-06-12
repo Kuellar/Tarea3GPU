@@ -50,6 +50,128 @@
     </div>
 
     <div class="box">
+      <span class="label">Cell</span>
+      <div class="columns is-mobile">
+        <div class="column is-half">
+          <!---->
+          <div class="custom-row custom-row-left">
+            Show color
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            Cell color
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            R
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            G
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            B
+          </div>
+          <!---->
+        </div>
+        <div class="column is-half">
+          <!---->
+          <div class="custom-row custom-row-right">
+            <label class="switch">
+              <input type="checkbox" id="cell-show-color" checked>
+              <span class="switch-slider round"></span>
+            </label>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="color-demo" id="cell-color-demo" style="background-color: rgb(255,255,255);">.</div>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="control">
+              <input class="slider slider-red" type="range" id="cell-color-r" min="0" max="1" step=".01" value="1">
+            </div>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="control">
+              <input class="slider slider-green" type="range" id="cell-color-g" min="0" max="1" step=".01" value="1">
+            </div>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="control">
+              <input class="slider slider-blue" type="range" id="cell-color-b" min="0" max="1" step=".01" value="1">
+            </div>
+          </div>
+          <!---->
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <span class="label">Cell field</span>
+      <div class="columns is-mobile">
+        <div class="column is-half">
+          <!---->
+          <div class="custom-row custom-row-left">
+            Show field
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            Field color
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            R
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            G
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            B
+          </div>
+          <!---->
+        </div>
+        <div class="column is-half">
+          <!---->
+          <div class="custom-row custom-row-right">
+            <label class="switch">
+              <input type="checkbox" id="field-show-color">
+              <span class="switch-slider round"></span>
+            </label>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="color-demo" id="field-color-demo" style="background-color: rgb(255,255,255);">.</div>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="control">
+              <input class="slider slider-red" type="range" id="field-color-r" min="0" max="1" step=".01" value="1">
+            </div>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="control">
+              <input class="slider slider-green" type="range" id="field-color-g" min="0" max="1" step=".01" value="1">
+            </div>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="control">
+              <input class="slider slider-blue" type="range" id="field-color-b" min="0" max="1" step=".01" value="1">
+            </div>
+          </div>
+          <!---->
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
       <span class="label">Cell center</span>
       <div class="columns is-mobile">
         <div class="column is-half">
@@ -107,7 +229,7 @@
           </div>
           <!---->
           <div class="custom-row custom-row-right">
-            <div class="color-demo" id="color-demo" style="background-color: rgba(1,1,1,1);">.</div>
+            <div class="color-demo" id="color-demo" style="background-color: rgba(255,255,255,1);">.</div>
           </div>
           <!---->
           <div class="custom-row custom-row-right">

@@ -67,3 +67,45 @@ document
 document
     .getElementById("point-color-a")
     .addEventListener("click", change_demo_color);
+
+/**
+ * Action taken by changin colors.
+ */
+const change_demo_cell_color = () => {
+    const r = document.getElementById("cell-color-r").value * 255;
+    const g = document.getElementById("cell-color-g").value * 255;
+    const b = document.getElementById("cell-color-b").value * 255;
+    document.getElementById("cell-color-demo").style.backgroundColor =
+        "rgb(" + r + "," + g + "," + b + ")";
+};
+
+document
+    .getElementById("cell-color-r")
+    .addEventListener("click", change_demo_cell_color);
+document
+    .getElementById("cell-color-g")
+    .addEventListener("click", change_demo_cell_color);
+document
+    .getElementById("cell-color-b")
+    .addEventListener("click", change_demo_cell_color);
+
+/**
+ * Action taken by changin colors.
+ */
+const change_demo_field_color = () => {
+    const r = document.getElementById("field-color-r").value * 255;
+    const g = document.getElementById("field-color-g").value * 255;
+    const b = document.getElementById("field-color-b").value * 255;
+    document.getElementById("field-color-demo").style.backgroundColor =
+        "rgb(" + r + "," + g + "," + b + ")";
+};
+
+document
+    .getElementById("field-color-r")
+    .addEventListener("click", change_demo_field_color);
+document
+    .getElementById("field-color-g")
+    .addEventListener("click", change_demo_field_color);
+document
+    .getElementById("field-color-b")
+    .addEventListener("click", change_demo_field_color);
