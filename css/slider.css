@@ -4,14 +4,20 @@ input[type='range'], input[type='range']::-webkit-slider-runnable-track, input[t
 /* THUMB */
 input[type=range]::-webkit-slider-thumb{
     border-radius: 5px;
+    width: 15px;
+    height: 15px;
     background-color: #ffffff;
 }
 input[type=range]::-moz-range-thumb{
     border-radius: 5px;
+    width: 15px;
+    height: 15px;
     background-color: #ffffff;
 }
 input[type=range]::-ms-thumb{
     border-radius: 5px;
+    width: 15px;
+    height: 15px;
     background-color: #ffffff;
 }
 input[type=range]::-webkit-slider-thumb:hover{

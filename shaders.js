@@ -21,6 +21,7 @@ uniform float u_point_g;
 uniform float u_point_b;
 uniform float u_point_a;
 uniform float u_point_gradient;
+uniform bool u_point_additive;
 
 vec2 random2( vec2 p ) {
     return fract(sin(vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))))*43758.5453);
@@ -67,12 +68,18 @@ void main() {
     // Show isolines
     // color -= abs(sin(40.0*m_dist))*0.07;
 
-    highp int is_center = int(step(m_dist, u_point_size/100.));
     // Draw cell center
+    highp int is_center = int(step(m_dist, u_point_size/100.));
     if (u_point_active && bool(is_center)) {
-        color.r += u_point_r*u_point_a*(1.-m_dist*u_point_gradient);
-        color.g += u_point_g*u_point_a*(1.-m_dist*u_point_gradient);
-        color.b += u_point_b*u_point_a*(1.-m_dist*u_point_gradient);
+        if (u_point_additive){
+            color.r += u_point_r*u_point_a*(1.-m_dist*u_point_gradient);
+            color.g += u_point_g*u_point_a*(1.-m_dist*u_point_gradient);
+            color.b += u_point_b*u_point_a*(1.-m_dist*u_point_gradient);
+        } else {
+            color.r = u_point_r*u_point_a*(1.-m_dist*u_point_gradient);
+            color.g = u_point_g*u_point_a*(1.-m_dist*u_point_gradient);
+            color.b = u_point_b*u_point_a*(1.-m_dist*u_point_gradient);
+        }
     }
 
     // Draw grid

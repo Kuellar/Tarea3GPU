@@ -52,7 +52,7 @@
     <div class="box">
       <span class="label">Cell center</span>
       <div class="columns">
-        <div class="column">
+        <div class="column is-half">
           <!---->
           <div class="custom-row custom-row-left">
             Show point
@@ -86,8 +86,12 @@
             Gradient
           </div>
           <!---->
+          <div class="custom-row custom-row-left">
+            Additive
+          </div>
+          <!---->
         </div>
-        <div class="column">
+        <div class="column is-half">
           <!---->
           <div class="custom-row custom-row-right">
             <label class="switch">
@@ -103,24 +107,24 @@
           </div>
           <!---->
           <div class="custom-row custom-row-right">
-            <div class="color-demo" id="color-demo" style="background-color: rgba(0,0,0,1);">.</div>
+            <div class="color-demo" id="color-demo" style="background-color: rgba(1,1,1,1);">.</div>
           </div>
           <!---->
           <div class="custom-row custom-row-right">
             <div class="control">
-              <input class="slider slider-red" type="range" id="point-color-r" min="0" max="1" step=".01" value="0">
+              <input class="slider slider-red" type="range" id="point-color-r" min="0" max="1" step=".01" value="1">
             </div>
           </div>
           <!---->
           <div class="custom-row custom-row-right">
             <div class="control">
-              <input class="slider slider-green" type="range" id="point-color-g" min="0" max="1" step=".01" value="0">
+              <input class="slider slider-green" type="range" id="point-color-g" min="0" max="1" step=".01" value="1">
             </div>
           </div>
           <!---->
           <div class="custom-row custom-row-right">
             <div class="control">
-              <input class="slider slider-blue" type="range" id="point-color-b" min="0" max="1" step=".01" value="0">
+              <input class="slider slider-blue" type="range" id="point-color-b" min="0" max="1" step=".01" value="1">
             </div>
           </div>
           <!---->
@@ -132,7 +136,14 @@
           <!---->
           <div class="custom-row custom-row-right">
             <label class="switch">
-              <input type="checkbox" id="point-gradient" checked>
+              <input type="checkbox" id="point-gradient">
+              <span class="switch-slider round"></span>
+            </label>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <label class="switch">
+              <input type="checkbox" id="point-additive">
               <span class="switch-slider round"></span>
             </label>
           </div>

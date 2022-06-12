@@ -77,6 +77,10 @@ const init = () => {
             type: "f",
             value: document.getElementById("point-gradient").checked * 1,
         },
+        u_point_additive: {
+            type: "bool",
+            value: document.getElementById("point-additive").checked * 1,
+        },
     };
 
     var material = new THREE.ShaderMaterial({
@@ -132,6 +136,8 @@ const render = () => {
     uniforms.u_point_a.value = document.getElementById("point-color-a").value;
     uniforms.u_point_gradient.value =
         document.getElementById("point-gradient").checked * 1;
+    uniforms.u_point_additive.value =
+        document.getElementById("point-additive").checked;
 };
 
 window.onload = init();
