@@ -141,6 +141,14 @@ const init = () => {
             type: "bool",
             value: document.getElementById("mouse-as-point").checked,
         },
+        u_mouse_hungry: {
+            type: "bool",
+            value: document.getElementById("mouse-hungry").checked,
+        },
+        u_mouse_hungry_radius: {
+            type: "f",
+            value: document.getElementById("mouse-hungry-radius").value,
+        },
     };
 
     var material = new THREE.ShaderMaterial({
@@ -225,6 +233,11 @@ const render = () => {
     // MOUSE
     uniforms.u_mouse_as_point.value =
         document.getElementById("mouse-as-point").checked;
+    uniforms.u_mouse_hungry.value =
+        document.getElementById("mouse-hungry").checked;
+    uniforms.u_mouse_hungry_radius.value = document.getElementById(
+        "mouse-hungry-radius"
+    ).value;
 };
 
 window.onload = init();

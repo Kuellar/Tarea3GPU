@@ -44,6 +44,8 @@ uniform float u_point_gradient;
 uniform bool u_point_additive;
 // Mouse
 uniform bool u_mouse_as_point;
+uniform bool u_mouse_hungry;
+uniform float u_mouse_hungry_radius;
 
 vec2 random2( vec2 p ) {
     return fract(sin(vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))))*43758.5453);
@@ -82,11 +84,11 @@ void main() {
     }
 
     // MOUSE AS POINT
+    vec2 mouse = u_mouse/u_resolution;
+    mouse += vel;
+    mouse *= u_grill;
+    float mouse_dist = distance(st, mouse);
     if (u_mouse_as_point) {
-        vec2 mouse = u_mouse/u_resolution;
-        mouse += vel;
-        mouse *= u_grill;
-        float mouse_dist = distance(st, mouse);
         if( mouse_dist < m_dist ) {
             m_dist = mouse_dist;
             m_point = 0.5 + 0.5*sin(u_time + 6.2831*(mouse-vel));
@@ -115,15 +117,30 @@ void main() {
 
     // Draw cell center
     highp int is_center = int(step(m_dist, u_point_size/100.));
+    highp int mouse_interference = int(step(m_dist, mouse_dist/u_mouse_hungry_radius));
     if (u_point_active && bool(is_center)) {
-        if (u_point_additive){
-            color.r += u_point_r*u_point_a*(1.-m_dist*u_point_gradient);
-            color.g += u_point_g*u_point_a*(1.-m_dist*u_point_gradient);
-            color.b += u_point_b*u_point_a*(1.-m_dist*u_point_gradient);
+        if(u_mouse_hungry){
+            if(bool(mouse_interference)) {
+                if (u_point_additive){
+                    color.r += u_point_r*u_point_a*(1.-m_dist*u_point_gradient);
+                    color.g += u_point_g*u_point_a*(1.-m_dist*u_point_gradient);
+                    color.b += u_point_b*u_point_a*(1.-m_dist*u_point_gradient);
+                } else {
+                    color.r = u_point_r*u_point_a*(1.-m_dist*u_point_gradient);
+                    color.g = u_point_g*u_point_a*(1.-m_dist*u_point_gradient);
+                    color.b = u_point_b*u_point_a*(1.-m_dist*u_point_gradient);
+                }
+            }
         } else {
-            color.r = u_point_r*u_point_a*(1.-m_dist*u_point_gradient);
-            color.g = u_point_g*u_point_a*(1.-m_dist*u_point_gradient);
-            color.b = u_point_b*u_point_a*(1.-m_dist*u_point_gradient);
+            if (u_point_additive){
+                color.r += u_point_r*u_point_a*(1.-m_dist*u_point_gradient);
+                color.g += u_point_g*u_point_a*(1.-m_dist*u_point_gradient);
+                color.b += u_point_b*u_point_a*(1.-m_dist*u_point_gradient);
+            } else {
+                color.r = u_point_r*u_point_a*(1.-m_dist*u_point_gradient);
+                color.g = u_point_g*u_point_a*(1.-m_dist*u_point_gradient);
+                color.b = u_point_b*u_point_a*(1.-m_dist*u_point_gradient);
+            }
         }
     }
 
