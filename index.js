@@ -48,6 +48,15 @@ const init = () => {
             type: "bool",
             value: !!document.getElementById("grill-eye").value,
         },
+        // GENERAL
+        u_general_speed_x: {
+            type: "f",
+            value: document.getElementById("general-speed-x").value,
+        },
+        u_general_speed_y: {
+            type: "f",
+            value: document.getElementById("general-speed-y").value,
+        },
         // CELL
         u_cell_show_color: {
             type: "bool",
@@ -178,6 +187,11 @@ const render = () => {
     uniforms.u_grill.value = document.getElementById("grill-division").value;
     uniforms.u_grill_active.value =
         !!document.getElementById("grill-eye").value;
+    // GENERAL
+    uniforms.u_general_speed_x.value =
+        document.getElementById("general-speed-x").value;
+    uniforms.u_general_speed_y.value =
+        document.getElementById("general-speed-y").value;
     // CELL
     uniforms.u_cell_show_color.value =
         document.getElementById("cell-show-color").checked;

@@ -16,6 +16,10 @@ uniform float u_time;
 uniform float u_grill;
 uniform bool u_grill_active;
 
+// GENERAL
+uniform float u_general_speed_x;
+uniform float u_general_speed_y;
+
 // CELL
 uniform bool u_cell_show_color;
 uniform float u_cell_r;
@@ -48,6 +52,8 @@ vec2 random2( vec2 p ) {
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     st.x *= u_resolution.x/u_resolution.y;
+    vec2 vel = vec2(-u_general_speed_x,-u_general_speed_y) * u_time/10.;
+    st += vel;
     vec3 color = vec3(.0);
 
     // Scale
@@ -78,11 +84,12 @@ void main() {
     // MOUSE AS POINT
     if (u_mouse_as_point) {
         vec2 mouse = u_mouse/u_resolution;
+        mouse += vel;
         mouse *= u_grill;
         float mouse_dist = distance(st, mouse);
         if( mouse_dist < m_dist ) {
             m_dist = mouse_dist;
-            m_point = 0.5 + 0.5*sin(u_time + 6.2831*mouse);
+            m_point = 0.5 + 0.5*sin(u_time + 6.2831*(mouse-vel));
         }
     }
 
