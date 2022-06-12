@@ -25,6 +25,10 @@ uniform bool u_field_show_color;
 uniform float u_field_r;
 uniform float u_field_g;
 uniform float u_field_b;
+/// ISOLINE
+uniform bool u_isoline_show_color;
+uniform float u_isoline_size;
+uniform float u_isoline_opacity;
 // CELL CENTER
 uniform bool u_point_active;
 uniform float u_point_size;
@@ -34,6 +38,8 @@ uniform float u_point_b;
 uniform float u_point_a;
 uniform float u_point_gradient;
 uniform bool u_point_additive;
+// Mouse
+uniform bool u_mouse_as_point;
 
 vec2 random2( vec2 p ) {
     return fract(sin(vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))))*43758.5453);
@@ -69,6 +75,17 @@ void main() {
         }
     }
 
+    // MOUSE AS POINT
+    if (u_mouse_as_point) {
+        vec2 mouse = u_mouse/u_resolution;
+        mouse *= u_grill;
+        float mouse_dist = distance(st, mouse);
+        if( mouse_dist < m_dist ) {
+            m_dist = mouse_dist;
+            m_point = 0.5 + 0.5*sin(u_time + 6.2831*mouse);
+        }
+    }
+
     // Assign a color using the closest point position
     // color += dot(m_point,vec2(.4,.6));
     if (u_cell_show_color) {
@@ -85,7 +102,9 @@ void main() {
     }
 
     // Show isolines
-    // color -= abs(sin(40.0*m_dist))*0.07;
+    if (u_isoline_show_color) {
+        color -= abs(sin(u_isoline_size*m_dist))*u_isoline_opacity;
+    }
 
     // Draw cell center
     highp int is_center = int(step(m_dist, u_point_size/100.));

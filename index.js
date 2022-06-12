@@ -81,6 +81,19 @@ const init = () => {
             type: "f",
             value: document.getElementById("field-color-b").value,
         },
+        // ISOLINE
+        u_isoline_show_color: {
+            type: "bool",
+            value: document.getElementById("isoline-show-color").checked,
+        },
+        u_isoline_size: {
+            type: "f",
+            value: document.getElementById("isoline-size").value,
+        },
+        u_isoline_opacity: {
+            type: "f",
+            value: document.getElementById("isoline-opacity").value,
+        },
         // CELL CENTER
         u_point_active: {
             type: "bool",
@@ -112,7 +125,12 @@ const init = () => {
         },
         u_point_additive: {
             type: "bool",
-            value: document.getElementById("point-additive").checked * 1,
+            value: document.getElementById("point-additive").checked,
+        },
+        // MOUSE
+        u_mouse_as_point: {
+            type: "bool",
+            value: document.getElementById("mouse-as-point").checked,
         },
     };
 
@@ -170,6 +188,13 @@ const render = () => {
     uniforms.u_field_r.value = document.getElementById("field-color-r").value;
     uniforms.u_field_g.value = document.getElementById("field-color-g").value;
     uniforms.u_field_b.value = document.getElementById("field-color-b").value;
+    // ISOLINE
+    uniforms.u_isoline_show_color.value =
+        document.getElementById("isoline-show-color").checked;
+    uniforms.u_isoline_size.value =
+        document.getElementById("isoline-size").value;
+    uniforms.u_isoline_opacity.value =
+        document.getElementById("isoline-opacity").value;
     // CELL CENTER
     uniforms.u_point_active.value =
         document.getElementById("show-point").checked;
@@ -182,6 +207,9 @@ const render = () => {
         document.getElementById("point-gradient").checked * 1;
     uniforms.u_point_additive.value =
         document.getElementById("point-additive").checked;
+    // MOUSE
+    uniforms.u_mouse_as_point.value =
+        document.getElementById("mouse-as-point").checked;
 };
 
 window.onload = init();
