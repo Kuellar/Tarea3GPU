@@ -170,7 +170,8 @@ const animate = () => {
 };
 
 const render = () => {
-    uniforms.u_time.value += clock.getDelta();
+    uniforms.u_time.value +=
+        clock.getDelta() * document.getElementById("general-speed").value;
     renderer.render(scene, camera);
 
     // GRILL
