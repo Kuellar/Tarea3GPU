@@ -1,52 +1,138 @@
-import { getGrill } from "./objects.js";
+import { vsSource, fsSource } from "./shaders.js";
+// import { getGrill, getNoise } from "./objects.js";
 
-const main = () => {
-    /* SETUP */
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(0, width, 0, height, 1, 1000);
-    camera.position.z = 5;
+var container;
+var camera, scene, renderer, clock;
+var uniforms;
 
-    camera.zoom = 1;
-    camera.updateProjectionMatrix();
+const init = () => {
+    container = document.getElementById("threeJS");
 
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById("threejsCanvas").appendChild(renderer.domElement);
-    /* SETUP */
+    // camera = new THREE.OrthographicCamera( // CHECK
+    //     -1, // left
+    //     1, // right
+    //     1, // top
+    //     -1, // bottom
+    //     -1, // near,
+    //     1 // far
+    // );
+    camera = new THREE.Camera();
+    camera.position.z = 1;
 
-    /* GRILL */
-    const MAX_POINTS_GRILL = 1000;
-    const grillGeometry = new THREE.BufferGeometry();
-    const grillPositions = new Float32Array(MAX_POINTS_GRILL * 3); // 3 vertices per point
-    grillGeometry.setAttribute(
-        "position",
-        new THREE.BufferAttribute(grillPositions, 3)
-    );
-    /* GRILL */
+    scene = new THREE.Scene();
+    clock = new THREE.Clock();
 
-    function animate() {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
+    var geometry = new THREE.PlaneBufferGeometry(2, 2);
 
-        /* GRILL */
-        if (!!document.getElementById("grill-eye").value) {
-            const grillDivision =
-                document.getElementById("grill-division").value;
-            const grill = getGrill(
-                grillGeometry,
-                camera.right,
-                camera.bottom,
-                grillDivision
-            );
-            scene.add(grill);
-        } else {
-            grillGeometry.setDrawRange(0, 0);
-        }
-        /* GRILL */
-    }
-    animate();
+    uniforms = {
+        // BASE
+        u_time: {
+            type: "f",
+            value: 1.0,
+        },
+        u_resolution: {
+            type: "v2",
+            value: new THREE.Vector2(),
+        },
+        u_mouse: {
+            type: "v2",
+            value: new THREE.Vector2(),
+        },
+        // PLAYGROUND
+        // GRILL
+        u_grill: {
+            type: "f",
+            value: document.getElementById("grill-division").value,
+        },
+        u_grill_active: {
+            type: "bool",
+            value: !!document.getElementById("grill-eye").value,
+        },
+        // CELL
+        u_point_active: {
+            type: "bool",
+            value: document.getElementById("show-point").checked,
+        },
+        u_point_size: {
+            type: "f",
+            value: document.getElementById("point-size").value,
+        },
+        u_point_r: {
+            type: "f",
+            value: document.getElementById("point-color-r").value,
+        },
+        u_point_g: {
+            type: "f",
+            value: document.getElementById("point-color-g").value,
+        },
+        u_point_b: {
+            type: "f",
+            value: document.getElementById("point-color-b").value,
+        },
+        u_point_a: {
+            type: "f",
+            value: document.getElementById("point-color-a").value,
+        },
+        u_point_gradient: {
+            type: "f",
+            value: document.getElementById("point-gradient").checked * 1,
+        },
+    };
+
+    var material = new THREE.ShaderMaterial({
+        uniforms: uniforms,
+        vertexShader: vsSource,
+        fragmentShader: fsSource,
+    });
+
+    var mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    renderer = new THREE.WebGLRenderer();
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    container.appendChild(renderer.domElement);
+
+    onWindowResize();
+    window.addEventListener("resize", onWindowResize, false);
+
+    container.onmousemove = (e) => {
+        uniforms.u_mouse.value.x =
+            e.pageX * (window.innerWidth / window.innerHeight);
+        uniforms.u_mouse.value.y = -e.pageY + window.innerHeight;
+    };
 };
 
-window.onload = main;
+const onWindowResize = (event) => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    uniforms.u_resolution.value.x = renderer.domElement.width;
+    uniforms.u_resolution.value.y = renderer.domElement.height;
+};
+
+const animate = () => {
+    requestAnimationFrame(animate);
+    render();
+};
+
+const render = () => {
+    uniforms.u_time.value += clock.getDelta();
+    renderer.render(scene, camera);
+
+    // GRILL
+    uniforms.u_grill.value = document.getElementById("grill-division").value;
+    uniforms.u_grill_active.value =
+        !!document.getElementById("grill-eye").value;
+    // CELL
+    uniforms.u_point_active.value =
+        document.getElementById("show-point").checked;
+    uniforms.u_point_size.value = document.getElementById("point-size").value;
+    uniforms.u_point_r.value = document.getElementById("point-color-r").value;
+    uniforms.u_point_g.value = document.getElementById("point-color-g").value;
+    uniforms.u_point_b.value = document.getElementById("point-color-b").value;
+    uniforms.u_point_a.value = document.getElementById("point-color-a").value;
+    uniforms.u_point_gradient.value =
+        document.getElementById("point-gradient").checked * 1;
+};
+
+window.onload = init();
+window.onload = animate();

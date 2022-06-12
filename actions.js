@@ -1,7 +1,8 @@
+/**
 document
     .getElementById("apply")
     .addEventListener("click", () => console.log("Apply"));
-
+ */
 /**
  * Action taken by pressing toggler button.
  */
@@ -40,3 +41,29 @@ const change_eye = () => {
     offIcon.classList.toggle("eye-hide-icon");
 };
 document.getElementById("eye-button").addEventListener("click", change_eye);
+
+/**
+ * Action taken by changin colors.
+ */
+const change_demo_color = () => {
+    const r = document.getElementById("point-color-r").value * 255;
+    const g = document.getElementById("point-color-g").value * 255;
+    const b = document.getElementById("point-color-b").value * 255;
+    const a = document.getElementById("point-color-a").value;
+    document.getElementById("color-demo").style.backgroundColor =
+        "rgba(" + r + "," + g + "," + b + "," + a + ")";
+};
+
+document
+    .getElementById("point-color-r")
+    .addEventListener("click", change_demo_color);
+document
+    .getElementById("point-color-g")
+    .addEventListener("click", change_demo_color);
+document
+    .getElementById("point-color-b")
+    .addEventListener("click", change_demo_color);
+
+document
+    .getElementById("point-color-a")
+    .addEventListener("click", change_demo_color);

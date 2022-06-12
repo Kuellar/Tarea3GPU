@@ -13,12 +13,14 @@
     <script type="module" src="actions.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./css/slider.css">
+    <link rel="stylesheet" href="./css/switch.css">
     <title>Tarea 3 GPU</title>
 </head>
 <body>
 <div class="menu-section menu-section-init" id="menu-section">
     <div class="box sticky">
-        <h1 class="title to-center">Cellular Noise Playground</h1>
+        <h1 class="title is-3to-center">Cellular Noise Playground</h1>
     </div>
 
     <div class="field box">
@@ -43,10 +45,104 @@
         </div>
       </div>
       <div class="control">
-        <input class="slider" type="range" id="grill-division" min="1" max="50" step="1" value="20">
+        <input class="slider slider-normal" type="range" id="grill-division" min="1" max="100" step="1" value="5">
       </div>
     </div>
 
+    <div class="box">
+      <span class="label">Cell center</span>
+      <div class="columns">
+        <div class="column">
+          <!---->
+          <div class="custom-row custom-row-left">
+            Show point
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            Point size
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            Point color
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            R
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            G
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            B
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            A
+          </div>
+          <!---->
+          <div class="custom-row custom-row-left">
+            Gradient
+          </div>
+          <!---->
+        </div>
+        <div class="column">
+          <!---->
+          <div class="custom-row custom-row-right">
+            <label class="switch">
+              <input type="checkbox" id="show-point" checked>
+              <span class="switch-slider round"></span>
+            </label>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="control">
+              <input class="slider slider-normal" type="range" id="point-size" min="1" max="120" step="1" value="10">
+            </div>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="color-demo" id="color-demo" style="background-color: rgba(0,0,0,1);">.</div>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="control">
+              <input class="slider slider-red" type="range" id="point-color-r" min="0" max="1" step=".01" value="0">
+            </div>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="control">
+              <input class="slider slider-green" type="range" id="point-color-g" min="0" max="1" step=".01" value="0">
+            </div>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="control">
+              <input class="slider slider-blue" type="range" id="point-color-b" min="0" max="1" step=".01" value="0">
+            </div>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <div class="control">
+              <input class="slider slider-white" type="range" id="point-color-a" min="0" max="1" step=".01" value="1">
+            </div>
+          </div>
+          <!---->
+          <div class="custom-row custom-row-right">
+            <label class="switch">
+              <input type="checkbox" id="point-gradient" checked>
+              <span class="switch-slider round"></span>
+            </label>
+          </div>
+          <!---->
+        </div>
+      </div>
+    </div>
+
+
+    <!--
     <div class="field box">
         <label class="label">Object</label>
         <div class="control">
@@ -76,7 +172,9 @@
           </label>
         </div>
     </div>
+    -->
 
+    <!--
     <div class="box">
         <span class="label">Upload object</span>
         <div class="file has-name">
@@ -100,8 +198,11 @@
             </label>
           </div>
     </div>
+    -->
 
+    <!--
     <button type="button" id="apply" class="button is-link to-right">Apply</button>
+    -->
 
 </div>
 
@@ -114,6 +215,6 @@
   </span>
 </button>
 <!-- CANVAS TRHEEJS -->
-<div id="threejsCanvas"></div>
+<div id="threeJS"></div>
 </body>
 </html>
