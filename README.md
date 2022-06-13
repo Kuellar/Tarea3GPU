@@ -6,9 +6,9 @@ In 1996, sixteen years after Perlin's original Noise and five years before his S
 
 To understand the principles behind it we need to start thinking in terms of iterations. Probably you know what that means: yes, start using for loops. There is only one catch with for loops in GLSL: the number we are checking against must be a constant (const). So, no dynamic loops - the number of iterations must be fixed.
 
-## Usage
+## Usage / How to run
 
-Visit [https://icuellar.com/Tarea3GPU/](https://icuellar.com/Tarea3GPU/)
+Visit [https://icuellar.com/Tarea3GPU/](https://icuellar.com/Tarea3GPU/) or open [index.html](https://github.com/Kuellar/Tarea3GPU/blob/master/index.html) in any browser.
 
 ## Example
 
