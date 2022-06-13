@@ -6,6 +6,10 @@ In 1996, sixteen years after Perlin's original Noise and five years before his S
 
 To understand the principles behind it we need to start thinking in terms of iterations. Probably you know what that means: yes, start using for loops. There is only one catch with for loops in GLSL: the number we are checking against must be a constant (const). So, no dynamic loops - the number of iterations must be fixed.
 
+## Usage
+
+Visit [https://icuellar.com/Tarea3GPU/](https://icuellar.com/Tarea3GPU/)
+
 ## Example
 
 ![example1](https://github.com/Kuellar/Tarea3GPU/blob/master/album/photo1.png)
@@ -13,3 +17,10 @@ To understand the principles behind it we need to start thinking in terms of ite
 ![example2](https://github.com/Kuellar/Tarea3GPU/blob/master/album/photo2.png)
 
 ![example3](https://github.com/Kuellar/Tarea3GPU/blob/master/album/photo3.png)
+
+## Acknowledgments
+- [The books of shaders](https://thebookofshaders.com/12/): Cellular Noise
+
+## Frameworks and libraries
+- [ThreeJS](https://threejs.org/): JavaScript 3D library
+- [Bulma](https://bulma.io/): The modern CSS framework that just works.
