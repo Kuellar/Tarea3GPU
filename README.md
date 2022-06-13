@@ -18,6 +18,8 @@ Visit [https://icuellar.com/Tarea3GPU/](https://icuellar.com/Tarea3GPU/) or open
 
 ![example3](https://github.com/Kuellar/Tarea3GPU/blob/master/album/photo3.png)
 
+![example4](https://github.com/Kuellar/Tarea3GPU/blob/master/album/photo4.png)
+
 ## Acknowledgments
 - [The books of shaders](https://thebookofshaders.com/12/): Cellular Noise
 
