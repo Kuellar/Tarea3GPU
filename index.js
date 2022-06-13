@@ -1,5 +1,4 @@
-import { vsSource, fsSource } from "./shaders.js";
-// import { getGrill, getNoise } from "./objects.js";
+import { vsSource, fsSource } from "./js/shaders.js";
 
 var container;
 var camera, scene, renderer, clock;
@@ -8,14 +7,6 @@ var uniforms;
 const init = () => {
     container = document.getElementById("threeJS");
 
-    // camera = new THREE.OrthographicCamera( // CHECK
-    //     -1, // left
-    //     1, // right
-    //     1, // top
-    //     -1, // bottom
-    //     -1, // near,
-    //     1 // far
-    // );
     camera = new THREE.Camera();
     camera.position.z = 1;
 

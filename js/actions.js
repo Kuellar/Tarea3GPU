@@ -1,9 +1,4 @@
 /**
-document
-    .getElementById("apply")
-    .addEventListener("click", () => console.log("Apply"));
- */
-/**
  * Action taken by pressing toggler button.
  */
 const change_menu = () => {
