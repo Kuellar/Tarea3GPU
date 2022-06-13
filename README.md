@@ -9,7 +9,7 @@ To understand the principles behind it we need to start thinking in terms of ite
 ## Usage / How to run
 
 - Option 1: Visit [https://icuellar.com/Tarea3GPU/](https://icuellar.com/Tarea3GPU/) 
-- Option 2: Lounch [LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in VScode.
+- Option 2: Launch [LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in VScode.
 
 ## Example
 
