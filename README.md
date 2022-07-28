@@ -8,7 +8,7 @@ To understand the principles behind it we need to start thinking in terms of ite
 
 ## Usage / How to run
 
-- Option 1: Visit [https://icuellar.com/Tarea3GPU/](https://icuellar.com/cellularnoise/) 
+- Option 1: Visit [https://icuellar.com/cellularnoise/](https://icuellar.com/cellularnoise/) 
 - Option 2: Launch [LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) in VScode.
 
 ## Demo
